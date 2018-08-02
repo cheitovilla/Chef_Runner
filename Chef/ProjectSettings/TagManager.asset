@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Piso
   - Obstaculo
+  - Diamante1
+  - Diamante2
+  - Diamante3
   layers:
   - Default
   - TransparentFX
