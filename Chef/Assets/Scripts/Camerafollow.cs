@@ -22,7 +22,7 @@ public class Camerafollow : MonoBehaviour
 		moveVector = target.position + offSet;
 
 		moveVector.x = 0;
-		moveVector.y = 3.61f;
+		moveVector.y = 2.73f;
 
 		transform.position = moveVector;
 	}
