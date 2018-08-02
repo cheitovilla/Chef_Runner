@@ -50,7 +50,7 @@ public class Recolector : MonoBehaviour
 
 	public void SetCountText ()
 	{
-		countTextDiamond.text = countDiamond.ToString ();
+		countTextDiamond.text = "Diamonds: " + countDiamond.ToString ();
 		//puntajeFinalText.text = countDiamond.ToString ();
 	}
 
