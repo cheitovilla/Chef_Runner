@@ -32,6 +32,11 @@ public class Score : MonoBehaviour
 		scoreText.text = "Score: " + ((int)score).ToString () + " m";
 		timer += Time.deltaTime;
 		timerText.text = "Time: " + ((int)timer).ToString () + " s";
+
+		if (score >=232) 
+		{
+			score = 232;
+		}
 	}
 
 

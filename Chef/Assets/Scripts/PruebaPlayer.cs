@@ -19,6 +19,7 @@ public class PruebaPlayer : MonoBehaviour
 	public Text lifeText;
 
 	public bool isDead = false;
+	public GameObject lose;
 
 	Animator anim;
 
@@ -66,6 +67,11 @@ public class PruebaPlayer : MonoBehaviour
 			}
 
 		}
+
+		if (rb.transform.position.z>= 450) {
+			anim.SetTrigger ("victory");
+			rb.velocity = new Vector3(0,0,0);
+		}
 			
 	}
 
@@ -97,6 +103,7 @@ public class PruebaPlayer : MonoBehaviour
 
 	public void Lost()
 	{
+		lose.SetActive (true);
 		isDead = true;
 		anim.SetTrigger ("dead");
 		GetComponent<Score> ().Death ();
