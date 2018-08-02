@@ -20,6 +20,7 @@ public class PruebaPlayer : MonoBehaviour
 
 	public bool isDead = false;
 	public GameObject lose;
+	public GameObject restart;
 
 	Animator anim;
 
@@ -104,6 +105,7 @@ public class PruebaPlayer : MonoBehaviour
 	public void Lost()
 	{
 		lose.SetActive (true);
+		restart.SetActive (true);
 		isDead = true;
 		anim.SetTrigger ("dead");
 		GetComponent<Score> ().Death ();
