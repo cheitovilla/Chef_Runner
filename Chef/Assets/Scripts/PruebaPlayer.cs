@@ -18,18 +18,26 @@ public class PruebaPlayer : MonoBehaviour
 	public int life = 3;
 	public Text lifeText;
 
+	public bool isDead = false;
+
+	Animator anim;
+
 	// Use this for initializatioint n
 	void Start () 
 	{
 		rb = this.GetComponent<Rigidbody> ();
+		anim = GetComponent<Animator> ();
 	//	rb.velocity = new Vector3 (velHoriz, velVert, 4);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+		if (isDead)
+			return;
 		//GetComponent<Rigidbody> ().velocity = new Vector3 (velHoriz, velVert, 4);
 		rb.velocity = new Vector3(velHoriz,rb.velocity.y,velForward);
+		//anim.SetTrigger ("running");
 
 
 		if (Input.GetKeyDown(KeyCode.LeftArrow) && (laneNum>1) && control == "n") 
@@ -53,6 +61,7 @@ public class PruebaPlayer : MonoBehaviour
 			if (enSuelo) 
 			{
 				enSuelo = false;
+				anim.SetTrigger ("jump");
 				rb.velocity = new Vector3 (velHoriz, JumpForcee, velForward);
 			}
 
@@ -81,11 +90,18 @@ public class PruebaPlayer : MonoBehaviour
 			lifeText.text = "Vidas: " + life.ToString ();
 			Destroy (collision.gameObject);
 			if (life<=0) {
-				//Lost();
+				Lost();
 			}
 		}
 	}
 
+	public void Lost()
+	{
+		isDead = true;
+		anim.SetTrigger ("dead");
+		GetComponent<Score> ().Death ();
+		Debug.Log ("Morí");
+	}
 
 	public void Setspeed(float modifer)
 	{
