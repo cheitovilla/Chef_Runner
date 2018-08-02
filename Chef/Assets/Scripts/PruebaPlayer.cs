@@ -1,20 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PruebaPlayer : MonoBehaviour {
+public class PruebaPlayer : MonoBehaviour
+{
 
 	private Rigidbody rb;
-	public Transform pos;
 	public float velHoriz = 0;
 	public float velVert = 0;
+	public float velForward = 4;
 	public int laneNum = 2;
-	public int upNum = 2;
 	public string control = "n";
 	public float JumpForcee;
 
+	public bool enSuelo = true;
+	public int life = 3;
+	public Text lifeText;
+
 	// Use this for initializatioint n
-	void Start () {
+	void Start () 
+	{
 		rb = this.GetComponent<Rigidbody> ();
 	//	rb.velocity = new Vector3 (velHoriz, velVert, 4);
 	}
@@ -23,32 +29,35 @@ public class PruebaPlayer : MonoBehaviour {
 	void Update () {
 
 		//GetComponent<Rigidbody> ().velocity = new Vector3 (velHoriz, velVert, 4);
-		rb.velocity = new Vector3(velHoriz,rb.velocity.y,4);
+		rb.velocity = new Vector3(velHoriz,rb.velocity.y,velForward);
 
 
-
-		if (Input.GetKeyDown(KeyCode.LeftArrow) && (laneNum>1) && control == "n") {
+		if (Input.GetKeyDown(KeyCode.LeftArrow) && (laneNum>1) && control == "n") 
+		{
 			velHoriz = -6;
 			StartCoroutine (stopSlide ());
 			laneNum -= 1;
 			control = "y";
 		}
 	
-		if (Input.GetKeyDown(KeyCode.RightArrow) && (laneNum<3) && control == "n") {
+		if (Input.GetKeyDown(KeyCode.RightArrow) && (laneNum<3) && control == "n") 
+		{
 			velHoriz = 6;
 			StartCoroutine (stopSlide ());
 			laneNum += 1;
 			control = "y";
 		}
 
-		if (Input.GetKeyDown (KeyCode.UpArrow)) {
-			rb.velocity = new Vector3 (velHoriz, JumpForcee, 4);
-		}
-//		
+		if (Input.GetKeyDown (KeyCode.UpArrow)) 
+		{
+			if (enSuelo) 
+			{
+				enSuelo = false;
+				rb.velocity = new Vector3 (velHoriz, JumpForcee, velForward);
+			}
 
-	
-	
-	
+		}
+			
 	}
 
 	IEnumerator stopSlide()
@@ -59,12 +68,29 @@ public class PruebaPlayer : MonoBehaviour {
 
 	}
 
-//	IEnumerator stopJump()
-//	{
-//		yield return new WaitForSeconds (.5f);
-//		velVert = 0;
-//		control = "n";
-//	}
+	private void OnCollisionEnter(Collision collision)
+	{
+		if (collision.gameObject.tag == "Piso") 
+		{
+			enSuelo = true;	
+		}
+
+		if (collision.gameObject.tag == "Obstaculo") 
+		{
+			life--;
+			lifeText.text = "Vidas: " + life.ToString ();
+			Destroy (collision.gameObject);
+			if (life<=0) {
+				//Lost();
+			}
+		}
+	}
+
+
+	public void Setspeed(float modifer)
+	{
+		velForward = 4f + modifer;
+	}
 	
 
 }
