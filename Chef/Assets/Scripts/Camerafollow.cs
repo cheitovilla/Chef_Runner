@@ -7,6 +7,7 @@ public class Camerafollow : MonoBehaviour
 
 	private Transform target;
 	private Vector3 offSet;
+	private Vector3 moveVector;
 
 	// Use this for initialization
 	void Start () 
@@ -18,6 +19,10 @@ public class Camerafollow : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		transform.position = target.position + offSet;
+		moveVector = target.position + offSet;
+
+		moveVector.x = 0;
+
+		transform.position = moveVector;
 	}
 }

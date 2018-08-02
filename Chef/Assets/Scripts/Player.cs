@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
 			{
 				enSuelo = false;
 				rb.velocity = new Vector3 (rb.velocity.x, Jumpforce, moveSpeed);
+				//rb.AddForce (rb.velocity.x, Jumpforce, moveSpeed, ForceMode.Impulse);
 			}
 		}
 

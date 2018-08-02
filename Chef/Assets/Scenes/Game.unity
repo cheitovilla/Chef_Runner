@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.43026498, g: 0.4651369, b: 0.49681556, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -411,13 +411,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 488694762}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.96023893, y: -0.21512583, z: -0.14390372, w: 0.10466055}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 7.9950004, y: -161.06201, z: -153.40901}
 --- !u!1 &708650954
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,8 +582,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1085077749}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 22.65}
-  m_LocalScale: {x: 1, y: 1, z: 4.905516}
+  m_LocalPosition: {x: 0, y: 0, z: 128.1}
+  m_LocalScale: {x: 1, y: 1, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -601,6 +601,7 @@ GameObject:
   - component: {fileID: 1112003266}
   - component: {fileID: 1112003270}
   - component: {fileID: 1112003265}
+  - component: {fileID: 1112003271}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -614,7 +615,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1112003264}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 435a37ebe639c458d992d2d4ea219a8c, type: 3}
   m_Name: 
@@ -706,6 +707,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1112003271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1112003264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b2367074678c4852914cbe4a238d5e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pos: {fileID: 1112003269}
+  velHoriz: 0
+  velVert: 0
+  laneNum: 2
+  upNum: 2
+  control: n
+  JumpForcee: 6
 --- !u!1 &1241510750
 GameObject:
   m_ObjectHideFlags: 0
